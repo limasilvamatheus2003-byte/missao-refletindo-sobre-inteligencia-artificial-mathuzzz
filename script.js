@@ -1,77 +1,76 @@
-const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
+const tituloResultado = document.querySelector(".titulo-resultado");
+const barraProgresso = document.getElementById("barra-progresso");
+const marcadorAno = document.getElementById("marcador-ano");
+const btnReiniciar = document.getElementById("btn-reiniciar");
+
+let anoAtual = 2026;
 
 const perguntas = [
     {
-        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
+        enunciado: "FASE 1: Chips de IA Neurais foram liberados comercialmente. Você decide implantar um para aprender idiomas instantaneamente?",
         alternativas: [
             {
-                texto: "Isso é assustador!",
-                afirmacao: "No início ficou com medo do que essa tecnologia pode fazer. "
+                texto: "Sim! Quero conexão direta e aprendizado instantâneo.",
+                afirmacao: "Você se tornou um dos primeiros ciborgues urbanos.",
+                anos: 5
             },
             {
-                texto: "Isso é maravilhoso!",
-                afirmacao: "Quis saber como usar IA no seu dia a dia."
+                texto: "Não. Prefiro manter minha mente sem conexões externas.",
+                afirmacao: "Você escolheu ser um humano 'natural' em uma sociedade híbrida.",
+                anos: 15
             }
         ]
     },
     {
-        enunciado: "Com a descoberta desta tecnologia, chamada Inteligência Artificial, uma professora de tecnologia da escola decidiu fazer uma sequência de aulas sobre esta tecnologia. No fim de uma aula ela pede que você escreva um trabalho sobre o uso de IA em sala de aula. Qual atitude você toma?",
+        enunciado: "FASE 2: Robôs domésticos autônomos com sentimentos simulados pedem salários e direitos. Qual é o seu posicionamento?",
         alternativas: [
             {
-                texto: "Utiliza uma ferramenta de busca na internet que utiliza IA para que ela ajude a encontrar informações relevantes para o trabalho e explique numa linguagem que facilite o entendimento.",
-                afirmacao: "Conseguiu utilizar a IA para buscar informações úteis."
+                texto: "Conceder direitos básicos e tratar robôs como cidadãos.",
+                afirmacao: "Sua empatia acelerou a integração pacífica entre humanos e robôs.",
+                anos: 10
             },
             {
-                texto: "Escreve o trabalho com base nas conversas que teve com colegas, algumas pesquisas na internet e conhecimentos próprios sobre o tema.",
-                afirmacao: "Sentiu mais facilidade em utilizar seus próprios recursos para escrever seu trabalho."
+                texto: "Negar. Mão de obra robótica deve continuar sendo puramente serviço.",
+                afirmacao: "Isso gerou uma grande revolta sintética e atrasou a expansão tecnológica.",
+                anos: 25
             }
         ]
     },
     {
-        enunciado: "Após a elaboração do trabalho escrito, a professora realizou um debate entre a turma para entender como foi realizada a pesquisa e escrita. Nessa conversa também foi levantado um ponto muito importante: como a IA impacta o trabalho do futuro. Nesse debate, como você se posiciona?",
+        enunciado: "FASE 3: Uma superinteligência global propõe governar o planeta sem políticos humanos para eliminar a corrupção. Você vota a favor?",
         alternativas: [
             {
-                texto: "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
-                afirmacao: "Vem impulsionando a inovação na área de IA e luta para abrir novos caminhos profissionais com IA."
+                texto: "Sim! Deixe a IA administrar recursos e leis de forma perfeita.",
+                afirmacao: "Você entregou as chaves do planeta para um sistema lógico impecável.",
+                anos: 20
             },
             {
-                texto: "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores.",
-                afirmacao: "Sua preocupação com as pessoas motivou a criar um grupo de estudos entre trabalhadores para discutir meios de utilização de IA de forma ética."
+                texto: "Não! Decisões humanas, mesmo imperfeitas, devem ser mantidas.",
+                afirmacao: "Você lutou pela soberania humana, mantendo o controle em nossas mãos.",
+                anos: 8
             }
         ]
     },
     {
-        enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
+        enunciado: "FASE 4: Cientistas criaram o 'Digital Upload', permitindo transferir sua consciência para um servidor eterno. Qual o seu destino?",
         alternativas: [
             {
-                texto: "Criar uma imagem utilizando uma plataforma de design como o Paint.",
-                afirmacao: "Notou também que muitas pessoas não sabem ainda utilizar as ferramentas tradicionais e decidiu compartilhar seus conhecimentos de design utilizando ferramentas de pintura digital para iniciantes."
+                texto: "Fazer o upload agora e viver para sempre no metaverso.",
+                afirmacao: "Sua consciência agora habita o espaço digital imortal.",
+                anos: 35
             },
             {
-                texto: "Criar uma imagem utilizando um gerador de imagem de IA.",
-                afirmacao: "Acelerou o processo de criação de trabalhos utilizando geradores de imagem e agora consegue ensinar pessoas que sentem dificuldades em desenhar manualmente como utilizar também!"
+                texto: "Recusar. A vida finita no mundo físico é o que nos torna humanos.",
+                afirmacao: "Você escolheu a beleza e os limites da vida biológica.",
+                anos: 12
             }
         ]
-    },
-    {
-        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz? ",
-        alternativas: [
-            {
-                texto: "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
-                afirmacao: "Infelizmente passou a utilizar a IA para fazer todas suas tarefas e agora se sente dependente da IA para tudo."
-            },
-            {
-                texto: "O chat pode ser uma tecnologia muito avançada, mas é preciso manter a atenção pois toda máquina erra, por isso revisar o trabalho e contribuir com as perspectivas pessoais é essencial.",
-                afirmacao: "Percebeu que toda IA reproduz orientações baseadas na empresa que programou e muito do que o chat escrevia não refletia o que pensava e por isso sabe que os textos gerados pela IA devem servir como auxílio e não resultado final. "
-            }
-        ]
-    },
+    }
 ];
-
 
 let atual = 0;
 let perguntaAtual;
@@ -82,14 +81,19 @@ function mostraPergunta() {
         mostraResultado();
         return;
     }
+    
+    const progresso = (atual / perguntas.length) * 100;
+    barraProgresso.style.width = `${progresso}%`;
+
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
+
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
@@ -98,16 +102,29 @@ function mostraAlternativas(){
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
+    historiaFinal += opcaoSelecionada.afirmacao + " ";
+    anoAtual += opcaoSelecionada.anos;
+    marcadorAno.textContent = `Ano Estimado: ${anoAtual}`;
     atual++;
     mostraPergunta();
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
+    barraProgresso.style.width = "100%";
+    caixaPerguntas.textContent = "Sua Linha do Tempo Foi Concluída!";
+    tituloResultado.textContent = `Você chegou ao ano de ${anoAtual}! 🚀`;
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
+    caixaResultado.style.display = "block";
 }
+
+btnReiniciar.addEventListener("click", () => {
+    atual = 0;
+    anoAtual = 2026;
+    historiaFinal = "";
+    marcadorAno.textContent = "Ano Base: 2026";
+    caixaResultado.style.display = "none";
+    mostraPergunta();
+});
 
 mostraPergunta();

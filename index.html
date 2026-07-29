@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Você decide o futuro da IA</title>
+    <title>Jornada Temporal: O Futuro da IA</title>
 </head>
 <body>
     <div class="caixa-principal">
-        <h1>Você decide o futuro da IA</h1>
+        <div class="cabecalho">
+            <h1>Jornada Temporal: Futuro IA ⏳</h1>
+            <div class="marcador-ano" id="marcador-ano">Ano Base: 2026</div>
+        </div>
+
+        <div class="barra-progresso-container">
+            <div class="barra-progresso" id="barra-progresso"></div>
+        </div>
+
         <div class="caixa-perguntas"></div>
         <div class="caixa-alternativas"></div>
+
         <div class="caixa-resultado">
+            <h2 class="titulo-resultado"></h2>
             <p class="texto-resultado"></p>
+            <button class="btn-reiniciar" id="btn-reiniciar">Tentar Outra Linha do Tempo 🔄</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

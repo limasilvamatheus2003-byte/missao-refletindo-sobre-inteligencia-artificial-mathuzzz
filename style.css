@@ -1,43 +1,115 @@
-:root{
-    --cor-fundo: #01080E ;
-    --cor-principal: #0B0D20 ;
-    --cor-secundaria: #212333; 
-    --cor-destaque: #2BDEFD;
-    --cor-texto: #D7F9FF;
-
-}
-
 body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0d1117, #161b22);
+    color: #e6edf3;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0;
 }
 
-.caixa-principal{
-    background-color: var(--cor-principal);
+.caixa-principal {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 2rem;
     width: 90%;
     max-width: 600px;
-    text-align: center;
-    padding: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
-h1{
-    color: var(--cor-destaque);
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-button {
-    background-color: var(--cor-secundaria);
-    color: var(--cor-texto);
+h1 {
+    font-size: 1.4rem;
+    color: #58a6ff;
+    margin: 0;
+}
+
+.marcador-ano {
+    background-color: #238636;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.barra-progresso-container {
+    width: 100%;
+    background-color: #30363d;
+    height: 8px;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.barra-progresso {
+    height: 100%;
+    width: 0%;
+    background-color: #58a6ff;
+    transition: width 0.4s ease;
+}
+
+.caixa-perguntas {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.caixa-alternativas button {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    background-color: #161b22;
+    color: #c9d1d9;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.caixa-alternativas button:hover {
+    background-color: #1f6feb;
+    color: #ffffff;
+    border-color: #58a6ff;
+}
+
+.caixa-resultado {
+    display: none;
+    background-color: #161b22;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+}
+
+.titulo-resultado {
+    color: #2ea043;
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.btn-reiniciar {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #238636;
+    color: white;
     border: none;
-    border-radius: 15px;
-    padding: 15px;
-    transition: background-color 0.3s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
-button:hover{
-    background-color: var(--cor-destaque);
-    color: var(--cor-principal);
+.btn-reiniciar:hover {
+    background-color: #2ea043;
 }
