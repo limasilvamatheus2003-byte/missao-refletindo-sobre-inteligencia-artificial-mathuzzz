@@ -1,33 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Empréstimos</title>
     <link rel="stylesheet" href="style.css">
-    <title>Quiz: História do Futebol</title>
 </head>
 <body>
-    <div class="caixa-principal">
-        <div class="cabecalho">
-            <h1>Lendas do Futebol 🏆</h1>
-            <div class="marcador-placar" id="marcador-placar">Nível 1</div>
-        </div>
+    <div class="container">
+        <header>
+            <h1>💰 Gestão de Empréstimos</h1>
+            <p>Gerencie seus clientes, prazos, juros e pagamentos</p>
+        </header>
 
-        <div class="barra-progresso-container">
-            <div class="barra-progresso" id="barra-progresso"></div>
-        </div>
+        <!-- Formulário de Cadastro de Empréstimo -->
+        <section class="card">
+            <h2>Novo Empréstimo</h2>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="clientName">Nome do Cliente:</label>
+                    <input type="text" id="clientName" placeholder="Ex: João da Silva" required>
+                </div>
 
-        <div class="caixa-perguntas"></div>
-        <div class="caixa-alternativas"></div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="amount">Valor Emprestado (R$):</label>
+                        <input type="number" id="amount" step="0.01" placeholder="Ex: 1000.00" required>
+                    </div>
 
-        <div class="caixa-resultado">
-            <h2 class="titulo-resultado"></h2>
-            <p class="texto-resultado"></p>
-            <button class="btn-reiniciar" id="btn-proximo">Avançar para Próxima Rodada 🔥</button>
-            <button class="btn-reiniciar btn-secundario" id="btn-reiniciar">Reiniciar do Zero 🔄</button>
+                    <div class="form-group">
+                        <label for="interestRate">Taxa de Juros por Mês (%):</label>
+                        <input type="number" id="interestRate" step="0.1" value="10" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="loanDate">Data do Empréstimo:</label>
+                        <input type="date" id="loanDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="installments">Quantidade de Meses/Parcelas:</label>
+                        <input type="number" id="installments" min="1" max="60" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstDueDate">Data de Vencimento (1ª Parcela):</label>
+                        <input type="date" id="firstDueDate" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Cadastrar Empréstimo</button>
+            </form>
+        </section>
+
+        <!-- Lista de Empréstimos -->
+        <section class="card">
+            <h2>Lista de Clientes e Empréstimos</h2>
+            <div id="loansList" class="loans-list">
+                <!-- Os cards de empréstimos serão renderizados via JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para Registrar Pagamento -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3>Registrar Pagamento</h3>
+            <p id="modalClientInfo"></p>
+            
+            <form id="paymentForm">
+                <input type="hidden" id="modalLoanId">
+                <input type="hidden" id="modalInstallmentIndex">
+
+                <div class="form-group">
+                    <label for="paymentAmount">Valor a Pagar (R$):</label>
+                    <input type="number" id="paymentAmount" step="0.01" required>
+                </div>
+
+                <button type="submit" class="btn-success">Confirmar Pagamento</button>
+            </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
